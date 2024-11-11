@@ -2,13 +2,11 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { set, z } from "zod";
-import { Button } from "@/components/ui/button";
+import { z } from "zod";
 import { Form } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import CustomFormFIeld from "../CustomFormFIeld";
+import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
-import { use, useState } from "react";
+import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
@@ -24,6 +22,7 @@ export enum FieldType {
   DATE_PICKER = "datePicker",
   SELECT = "select",
   SKELETON = "skeleton",
+  TEXTAREA = "textArea",
 }
 
 const PatientForm = () => {
@@ -62,7 +61,7 @@ const PatientForm = () => {
           <h1 className="header">Hi there</h1>
           <p className="text-dark-700">Schedule your first appointment.</p>
         </section>
-        <CustomFormFIeld
+        <CustomFormField
           fieldType={FieldType.INPUT}
           control={form.control}
           name="name"
@@ -71,7 +70,7 @@ const PatientForm = () => {
           iconSrc="/assets/icons/user.svg"
           iconAlt="user"
         />
-        <CustomFormFIeld
+        <CustomFormField
           fieldType={FieldType.INPUT}
           control={form.control}
           name="email"
@@ -80,7 +79,7 @@ const PatientForm = () => {
           iconSrc="/assets/icons/email.svg"
           iconAlt="email"
         />
-        <CustomFormFIeld
+        <CustomFormField
           fieldType={FieldType.PHONE_INPUT}
           control={form.control}
           name="phone"
